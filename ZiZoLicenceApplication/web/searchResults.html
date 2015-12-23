@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles/mainWebpageStyle.css">
+    <link rel="import" href="menu.html">
+
+    <meta charset="utf-8">
+    <title>Search Results</title>
+    <script type="application/dart" src="dart/searchresults.dart"></script>
+    <script src="packages/browser/dart.js"> </script>
+  </head>
+ 
+  <body>   
+    <img id="topPage" src="images/whiteBackground.jpg"/>
+    <img id="zizoLogo" src="images/logo-zizo.jpg"/>
+    <img id="bottomPage" src="images/whiteBackground.jpg"/>
+    
+    <div id="blanket" style="display:none"></div>
+    <div id="popUpDiv" style="display:none">
+      <br>
+      <br id="addBreak" hidden>
+      <div id="pictureDiv"><img id = "tick" src = "images/ticksmall.png"/></div>
+      <h2 id = "popupTitle">Licence Created</h2>
+      <div id="divMiddle" align="left">
+        <ul id="ulRegKey" class="form-style-1" style="display: none">
+          <li><label id="addLabel1" style="display: none">Registry Key:<span class="required">*</span></label>
+              <input id="keyText"  type="text" class="field-long" placeholder="Registry Key"  style="display: none"/>
+          </li>
+        </ul>
+        <ul id="ulConPath" class="form-style-1" style="display: none">
+          <li><label id="addLabel2" style="display: none">Content Path:<span class="required">*</span></label>
+              <input id="browseText" type="text" class="field-long" placeholder="Content Path" style="display: none" />
+              <button id="browseButton" style="display: none">Browse</button>
+          </li>
+        </ul>
+      </div>
+      
+      <p id = "popupParagraph"><output id = "popupText"></output><output id = "serverResponse"></output><p>
+      <div id = "buttonPlacement" align="center">
+      <button id = "dismissFinal" class = "dismissButton">Dismiss</button>
+      <button id = "popupAction" class = "popupButtons">Add Registry</button>
+      <button id = "no" class = "dismissButton">No</button>
+      <button id = "yes" class = "popupButtons">Yes</button>
+      <button id = "ok" class = "popupButtons">Ok</button>
+      </div>
+    </div>
+    
+    <div id="pageLayout">
+      <h2 id="searchTitle">Search Results</h2>
+        <h3 id="registrySubTitle">Select The Licences You Wish To Delete Below</h3>
+          <div id="searchTableDiv">
+            <table id="searchTable">
+            </table>
+            <button id="deleteLicencesButton" type="button" class="loginButtons2">Delete</button>
+            <button id="returnButton" type="button" class="loginButtons2">Return</button>
+          </div>
+     </div>
+    
+    <script type="text/javascript" src="menu.js"> </script>
+    <script type="text/javascript" src="footer.js"> </script>
+  </body>
+</html>

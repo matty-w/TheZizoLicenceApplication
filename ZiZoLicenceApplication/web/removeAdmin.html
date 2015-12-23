@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles/mainWebpageStyle.css">
+  	<meta charset="utf-8">
+    <title>Remove Admin</title>
+    <script type="application/dart" src="dart/removeadmin.dart"></script>
+    <script src="packages/browser/dart.js"> </script>
+  </head>
+ 
+  <body>   
+    <img id="topPage" src="images/whiteBackground.jpg"/>
+    <img id="zizoLogo" src="images/logo-zizo.jpg"/>
+    <img id="bottomPage" src="images/whiteBackground.jpg"/>
+    
+    <div id="blanket" style="display:none"></div>
+    <div id="popUpDiv" style="display:none">
+      <br>
+      <br id="addBreak" hidden>
+      <div id="pictureDiv"><img id = "tick" src = "images/ticksmall.png"/></div>
+      <h2 id = "popupTitle">Licence Created</h2>
+      <div id="divMiddle" align="left">
+        <ul id="ulRegKey" class="form-style-1" style="display: none">
+          <li><label id="addLabel1" style="display: none">Registry Key:<span class="required">*</span></label>
+              <input id="keyText"  type="text" class="field-long" placeholder="Registry Key"  style="display: none"/>
+          </li>
+        </ul>
+        <ul id="ulConPath" class="form-style-1" style="display: none">
+          <li><label id="addLabel2" style="display: none">Content Path:<span class="required">*</span></label>
+              <input id="browseText" type="text" class="field-long" placeholder="Content Path" style="display: none" />
+              <button id="browseButton" style="display: none">Browse</button>
+          </li>
+        </ul>
+      </div>
+      
+      <p id = "popupParagraph"><output id = "popupText"></output><output id = "serverResponse"></output><p>
+      <div id = "buttonPlacement" align="center">
+      <button id = "dismissFinal" class = "dismissButton">Dismiss</button>
+      <button id = "popupAction" class = "popupButtons">Add Registry</button>
+      <button id = "no" class = "dismissButton">No</button>
+      <button id = "yes" class = "popupButtons">Yes</button>
+      <button id = "ok" class = "popupButtons">Ok</button>
+      </div>
+    </div>
+    
+    <div id = "pageDivSmall">    
+     <form id = "default_form" action="#">
+      <fieldset id = "default_fieldset">
+        <legend id = "default_legend">Remove A User</legend>
+          <ul class="form-style-1">
+          <li><label>User For Deletion:<span class="required">*</span></label>
+              <input type = "text" id = "username" class="field-long" placeholder="Admin Username"/>
+              <img id="tooltip" data-toggle="tooltip" 
+   title="This is where the User types the name of the Admin they wish to remove."
+   src="images/tooltipSmall.gif"/>
+          </li>
+          <p><input type = "button" id = "removeUser_button" value="Remove Admin" class="loginButtons2"/></p>
+          </ul>
+      </fieldset>
+     </form>
+    </div> 
+    
+    <script type="text/javascript" src="menu.js"> </script>
+    <script type="text/javascript" src="footer.js"> </script>
+  </body>
+</html>
