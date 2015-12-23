@@ -1,7 +1,7 @@
 
 import 'dart:html';
 import 'viewablepages.dart';
-import 'package:LicenceServerFunctions/ServerFunctions.dart';
+import 'package:ServerFunctions/ServerFunctions.dart';
 import 'package:PopupLibrary/PopupLibrary.dart';
 
 class ListenToButtons
