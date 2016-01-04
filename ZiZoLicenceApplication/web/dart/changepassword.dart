@@ -4,7 +4,7 @@ import 'loadscreenelements.dart';
 void main() 
 {
   window.onContentLoaded.listen(refresh);
-  //refresh(null);
+  refresh(null);
 }
 
 void refresh(Event e)
