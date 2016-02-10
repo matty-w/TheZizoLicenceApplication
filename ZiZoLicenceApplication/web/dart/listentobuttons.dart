@@ -6,27 +6,29 @@ import 'package:PopupLibrary/PopupLibrary.dart';
 
 class ListenToButtons
 { 
-  GlobalFunctions g = new GlobalFunctions();
+  GlobalNavigationFunctions gnf = new GlobalNavigationFunctions();
   PopupSelection ps = new PopupSelection();
   PopupConstructor pc = new PopupConstructor();
-  NavigationFunctions navigate = new NavigationFunctions();
+  LicenceActionFunctions laf = new LicenceActionFunctions();
+  OnLoadLicence oll = new OnLoadLicence();
+  LicenceNavigation ln = new LicenceNavigation();
   
   void login()
   {
-    querySelector("#submitButton").onClick.listen(navigate.loginLicence);
+    querySelector("#submitButton").onClick.listen((MouseEvent m) => gnf.loginLicenceApplication("#usernameTextbox", "#passwordTextbox"));
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);
   }
   
   void createLicence()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     CreateLicenceFunctions c = new CreateLicenceFunctions();
-    querySelector("#popupAction").onClick.listen(g.saveToClipboard);
+    querySelector("#popupAction").onClick.listen(laf.saveToClipboard);
     querySelector("#yes").onClick.listen(c.completeLicence);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#no").onClick.listen(pc.dismissBasicPrompt);
-    g.setLogOut();
-    g.setDefaultIpAddress();
+    ln.setLogOut("#showLogOut");
+    oll.setDefaultIpAddress("#url");
     c.disableDateLengthTextBox();
     c.createDefaultDate();
     c.setRadioButtons();
@@ -38,9 +40,9 @@ class ListenToButtons
   
   void addAdmin()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     AddAdminFunctions a = new AddAdminFunctions();
-    g.setLogOut();
+    ln.setLogOut("#showLogOut");
     querySelector("#ok").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);     
     querySelector("#username-output").innerHtml = window.sessionStorage['username'];
@@ -50,9 +52,9 @@ class ListenToButtons
   
   void addPermissions()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     AddPermissionsFunctions a = new AddPermissionsFunctions();
-    g.setLogOut();
+    ln.setLogOut("#showLogOut");
     querySelector("#ok").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);    
     querySelector("#addPermissions_button").onClick.listen(a.addPermission);
@@ -63,9 +65,9 @@ class ListenToButtons
   
   void removePermissions()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     AddPermissionsFunctions a = new AddPermissionsFunctions();
-    g.setLogOut();
+    ln.setLogOut("#showLogOut");
     querySelector("#ok").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#removePermissions_button").onClick.listen(a.removePermission);
@@ -76,11 +78,11 @@ class ListenToButtons
   
   void regenerateLicence()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     RegenerateLicenceFunctions r = new RegenerateLicenceFunctions();
-    g.setLogOut();
-    g.setDefaultIpAddress();
-    querySelector("#popupAction").onClick.listen(g.saveToClipboard);
+    ln.setLogOut("#showLogOut");
+    oll.setDefaultIpAddress("#url");
+    querySelector("#popupAction").onClick.listen(laf.saveToClipboard);
     querySelector("#ok").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#regenerateLicence_button").onClick.listen(r.regenerateLicence);
@@ -90,10 +92,10 @@ class ListenToButtons
   
   void removeAdmin()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     
     RemoveAdminFunctions r = new RemoveAdminFunctions();
-    g.setLogOut();
+    ln.setLogOut("#showLogOut");
     querySelector("#ok").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);     
     querySelector("#username-output").innerHtml = window.sessionStorage['username'];
@@ -103,13 +105,13 @@ class ListenToButtons
   
   void removeLicence()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     RemoveLicenceFunctions r = new RemoveLicenceFunctions();
     Storage local = window.sessionStorage;
     String response = local['permissions'];
     InputElement searchBox = querySelector("#licenceSearch");
     ButtonElement searchButton = querySelector("#removeLicenceSearch_button");
-    window.onLoad.listen(g.clearTable);
+    window.onLoad.listen(laf.clearTable);
     searchBox.disabled = true;
     searchButton.disabled = false;
     if(response.contains("check-licence"))
@@ -123,7 +125,7 @@ class ListenToButtons
       searchButton.style.color = "#848482";
     }
     
-    g.setLogOut();
+    ln.setLogOut("#showLogOut");
     querySelector("#ok").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#removeLicence_button").onClick.listen(r.removeLicence);
@@ -134,9 +136,9 @@ class ListenToButtons
   
   void searchResults()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     LicenceSearchResults s = new LicenceSearchResults();
-    g.setLogOut();
+    ln.setLogOut("#showLogOut");
     window.onLoad.listen(s.loadTable);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);
     querySelector("#ok").onClick.listen(pc.dismissBasicPrompt);
@@ -147,7 +149,7 @@ class ListenToButtons
   
   void changePassword()
   {
-    window.onLoad.listen(g.checkForLoggedInUser);
+    window.onLoad.listen((Event e) => gnf.checkForLoggedInUser("'username'", "'password'"));
     InputElement username = querySelector("#username");
     Storage local = window.sessionStorage;
     String response = local['permissions'];
@@ -167,7 +169,7 @@ class ListenToButtons
     }  
     
     ChangePassword cp = new ChangePassword();
-    g.setLogOut();
+    ln.setLogOut("#showLogOut");
     querySelector("#username-output").innerHtml = window.sessionStorage['username'];
     querySelector("#changePassword_submitButton").onClick.listen(cp.changePassword);
     querySelector("#dismissFinal").onClick.listen(pc.dismissBasicPrompt);
